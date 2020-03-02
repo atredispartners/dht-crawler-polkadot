@@ -1,0 +1,21 @@
+diff --git a/discovery/crawler/go-libp2p-swarm-patched/swarm_dial.go b/discovery/crawler/go-libp2p-swarm-patched/swarm_dial.go
+index 475a7e2..f77e841 100644
+--- a/discovery/crawler/go-libp2p-swarm-patched/swarm_dial.go
++++ b/discovery/crawler/go-libp2p-swarm-patched/swarm_dial.go
+@@ -476,13 +476,15 @@ func (s *Swarm) dialAddr(ctx context.Context, p peer.ID, addr ma.Multiaddr) (tra
+ 		return nil, err
+ 	}
+ 
+-	// Trust the transport? Yeah... right.
++	/*
++	// Trust the transport? Yeah... right!
+ 	if connC.RemotePeer() != p {
+ 		connC.Close()
+ 		err = fmt.Errorf("BUG in transport %T: tried to dial %s, dialed %s", p, connC.RemotePeer(), tpt)
+ 		log.Error(err)
+ 		return nil, err
+ 	}
++	*/
+ 
+ 	// success! we got one!
+ 	return connC, nil

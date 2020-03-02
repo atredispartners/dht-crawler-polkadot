@@ -1,0 +1,21 @@
+diff --git a/discovery/crawler/go-libp2p-secio-patched/protocol.go b/discovery/crawler/go-libp2p-secio-patched/protocol.go
+index 7ac81af..2aa026e 100644
+--- a/discovery/crawler/go-libp2p-secio-patched/protocol.go
++++ b/discovery/crawler/go-libp2p-secio-patched/protocol.go
+@@ -204,14 +204,9 @@ func (s *secureSession) runHandshakeSync() error {
+ 	switch s.remotePeer {
+ 	case actualRemotePeer:
+ 		// All good.
+-	case "":
+-		// No peer set. We're accepting a remote connection.
+-		s.remotePeer = actualRemotePeer
+ 	default:
+-		// Peer mismatch. Bail.
+-		s.insecure.Close()
+-		log.Debugf("expected peer %s, got peer %s", s.remotePeer, actualRemotePeer)
+-		return ErrWrongPeer
++		// Accept any peer
++		s.remotePeer = actualRemotePeer
+ 	}
+ 
+ 	log.Debugf("1.1 Identify: %s Remote Peer Identified as %s", s.localPeer, s.remotePeer)
