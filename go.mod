@@ -1,6 +1,6 @@
 module crawler
 
-go 1.14
+go 1.13
 
 // Remove the PeerID check because of the difference in identify vs sha2-256 multihash types
 replace github.com/libp2p/go-libp2p-secio => ./deps/go-libp2p-secio-patched
